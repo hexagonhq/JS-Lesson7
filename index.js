@@ -42,7 +42,7 @@ const getDateBirthday = now => {
     let dateToString = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
     let res = (getDateBirthday - dateToString) / (1000 * 60 * 60 * 24);
 
-    alert(res);
+    alert(res +' ' + 'дня(ей)');
   } else {
     alert('не верно');
     getDateBirthday(new Date(), valid);
