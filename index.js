@@ -28,19 +28,24 @@ console.log(day);
 
 // task 4
 const getDateBirthday = now => {
-  let user = prompt('enter your birthday in the format: YYYY - MM - DD');
+  let user = prompt('enter your birthday in the format: YYYY - MM - DD', '');
+
+  if (user === null) {
+    return;
+  }
+
   const date = {};
   const getData = user.split('-');
 
   if (valid(getData.join(''), date)) {
     const getDateBirthday = new Date(now.getFullYear(), date['month'] - 1, date['date']);
     let dateToString = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-    const res = (getDateBirthday - dateToString) / (1000 * 60 * 60 * 24);
+    let res = (getDateBirthday - dateToString) / (1000 * 60 * 60 * 24);
 
-    alert(res +' ' + 'день(я-ей)');
-
+    alert(res +' ' + days)
   } else {
     alert('не верно');
+    getDateBirthday(new Date(), valid);
   }
 };
 
