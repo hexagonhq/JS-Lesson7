@@ -39,10 +39,13 @@ const getDateBirthday = now => {
 
   if (valid(getData.join(''), date)) {
     const getDateBirthday = new Date(now.getFullYear(), date['month'] - 1, date['date']);
-    let dateToString = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-    let res = (getDateBirthday - dateToString) / (1000 * 60 * 60 * 24);
+    const dateToString = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    const res = (getDateBirthday - dateToString) / (1000 * 60 * 60 * 24);
+    const keys = [2, 0, 1, 1, 1, 2];
+    const days = ['День', 'Дня', 'Дней'];
+    const isDay = days[ (res % 100 > 4 && res % 100 < 20) ? 2 : keys[(res % 10 < 5) ? res % 10 : 5] ];
 
-    alert(res +' ' + 'дня(ей)');
+    alert(res +' ' + isDay);
   } else {
     alert('не верно');
     getDateBirthday(new Date(), valid);
